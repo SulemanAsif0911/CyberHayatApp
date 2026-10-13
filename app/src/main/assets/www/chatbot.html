@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Chatbot | Cyber Hayat PK</title>
+<meta name="description" content="Talk to the Cyber Hayat guided support chatbot, powered by Google Gemini, for step-by-step help with cyber harassment." />
+<meta name="theme-color" content="#0a0a0a" />
+<link rel="icon" href="assets/img/logo.png" type="image/png" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+<script>(function(){try{var t=localStorage.getItem('ch_theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
+
+</head>
+<body>
+<a href="#main" class="skip-link">Skip to content</a>
+
+<!-- ============ TOP BAR ============ -->
+<header class="topbar">
+  <div class="shell topbar-inner">
+    <a href="index.html" class="brand">
+      <img src="assets/img/logo.png" alt="Cyber Hayat shield logo" />
+      <span>Cyber Hayat<span class="tag">Respect &middot; Support &middot; Empower</span></span>
+    </a>
+    <nav class="primary-nav" aria-label="Primary">
+      <ul>
+            <li><a href="index.html" data-nav-link data-i18n="nav.home" class="">Home</a></li>
+            <li><a href="guide.html" data-nav-link data-i18n="nav.guide" class="">Guide</a></li>
+            <li><a href="chatbot.html" data-nav-link data-i18n="nav.chatbot" class="is-active">Chatbot</a></li>
+            <li><a href="resources.html" data-nav-link data-i18n="nav.resources" class="">Resources</a></li>
+            <li><a href="helplines.html" data-nav-link data-i18n="nav.helplines" class="">Helplines</a></li>
+      </ul>
+    </nav>
+    <div class="topbar-cta">
+      <a href="helplines.html" class="btn btn-outline btn-sm" data-i18n="cta.helplines">Helplines</a>
+      <a href="chatbot.html" class="btn btn-accent btn-sm" data-i18n="cta.getHelp">Get Help Now</a>
+    </div>
+    <button class="settings-toggle" data-settings-toggle aria-label="Open settings">
+      <svg class="svg-icon stroke" viewBox="0 0 24 24" width="18" height="18"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+    </button>
+    <button id="menuToggle" class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+      <svg class="svg-icon stroke" viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+  </div>
+</header>
+
+<!-- ============ MOBILE NAV MENU ============ -->
+<div id="navMenu">
+  <div class="navmenu-top">
+    <a href="index.html" class="navmenu-brand"><img src="assets/img/logo.png" alt="Cyber Hayat" /> Cyber Hayat</a>
+    <button id="navMenuClose" class="navmenu-close" aria-label="Close menu">
+      <svg class="svg-icon stroke" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="navmenu-nav">
+    <div class="shell">
+      <ul>
+              <li><a href="index.html" data-nav-link class="navmenu-item"><span class="navmenu-item-index">01</span><span class="navmenu-item-label" data-i18n="nav.home">Home</span></a></li>
+              <li><a href="guide.html" data-nav-link class="navmenu-item"><span class="navmenu-item-index">02</span><span class="navmenu-item-label" data-i18n="nav.guide">Guide</span></a></li>
+              <li><a href="chatbot.html" data-nav-link class="navmenu-item is-active"><span class="navmenu-item-index">03</span><span class="navmenu-item-label" data-i18n="nav.chatbot">Chatbot</span></a></li>
+              <li><a href="resources.html" data-nav-link class="navmenu-item"><span class="navmenu-item-index">04</span><span class="navmenu-item-label" data-i18n="nav.resources">Resources</span></a></li>
+              <li><a href="helplines.html" data-nav-link class="navmenu-item"><span class="navmenu-item-index">05</span><span class="navmenu-item-label" data-i18n="nav.helplines">Helplines</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="navmenu-bottom">
+    <a href="chatbot.html" class="btn btn-accent" data-i18n="cta.getHelp">Get Help Now</a>
+    <a href="helplines.html" class="btn btn-ghost-dark" data-i18n="cta.helplines">View Helplines</a>
+    <button class="btn btn-ghost-dark" data-settings-toggle>Settings ⚙️</button>
+  </div>
+</div>
+
+<main id="main">
+
+<!-- ============ CHAT APP ============ -->
+<section class="section chat-page-section">
+  <div class="shell">
+
+    <div class="chat-page-head reveal">
+      <img src="assets/img/logo.png" alt="" class="chat-page-mark" />
+      <div>
+        <h1 data-i18n="chat.title">Cyber Hayat Assistant</h1>
+        <p data-i18n="chat.subtitle">Private guidance for cyber harassment &mdash; powered by Gemini, connected in Settings ⚙️</p>
+      </div>
+      <span class="chat-page-badge">
+        <span class="dot"></span> <span data-i18n="chat.monitored">Monitored for urgent cases</span>
+      </span>
+    </div>
+
+    <div class="chatapp-shell">
+      <!-- History sidebar -->
+      <aside class="chat-history" id="chatHistory">
+        <button id="newChatBtn" class="chat-history-new" data-i18n="chat.newChat">
+          <svg class="svg-icon stroke" viewBox="0 0 24 24" width="16" height="16"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          <span data-i18n="chat.newChat">New chat</span>
+        </button>
+        <div class="chat-history-list" id="chatHistoryList">
+          <!-- session items injected by JS -->
+        </div>
+        <div class="chat-history-foot">
+          <svg class="svg-icon stroke" viewBox="0 0 24 24" width="14" height="14"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"/></svg>
+          <span data-i18n="chat.footHint">Conversations may be reviewed by our support team for urgent cases.</span>
+        </div>
+      </aside>
+
+      <!-- Chat window -->
+      <div class="chat-main">
+        <div class="chat-window chat-window-lg" data-track-form>
+          <div class="chat-header">
+            <div class="chat-header-id">
+              <img src="assets/img/logo.png" alt="" />
+              <div>
+                <div class="chat-header-title" id="chatSessionTitle" data-i18n="chat.newChatTitle">New Chat</div>
+                <div class="chat-status"><span class="dot"></span><span data-i18n="chat.confidential">Reviewed for safety &middot; not public</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="chat-messages" id="chatMessages">
+            <div class="chat-empty-state" id="chatEmptyState">
+              <img src="assets/img/logo.png" alt="" />
+              <p data-i18n="chat.greeting">Tell me what's happening &mdash; I'll walk you through saving evidence, securing your accounts, and reaching the right support channel.</p>
+              <div class="quick-topics-row">
+                <button class="quick-chip" data-quick-prompt="blackmail">🔒 <span data-i18n="chat.q.blackmail">Blackmailed</span></button>
+                <button class="quick-chip" data-quick-prompt="fake">👤 <span data-i18n="chat.q.fake">Fake account</span></button>
+                <button class="quick-chip" data-quick-prompt="stalking">👁️ <span data-i18n="chat.q.stalking">Being stalked</span></button>
+                <button class="quick-chip" data-quick-prompt="doxing">📍 <span data-i18n="chat.q.doxing">Info shared</span></button>
+                <button class="quick-chip" data-quick-prompt="unsafe">🚨 <span data-i18n="chat.q.unsafe">Unsafe now</span></button>
+              </div>
+            </div>
+          </div>
+
+          <form id="chatForm" class="chat-input-row">
+            <input type="text" id="chatInput" placeholder="Type your question…" data-i18n-placeholder="chat.inputPlaceholder" autocomplete="off" />
+            <button type="submit" class="chat-send" aria-label="Send message">
+              <svg class="svg-icon stroke" viewBox="0 0 24 24" width="18" height="18"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            </button>
+          </form>
+          <div class="chat-footnote">
+            <span data-i18n="chat.footnote">🔒 A record of this chat is kept by our support team for your safety.</span>
+            <a href="helplines.html" data-i18n="chat.dangerLink">In danger right now? Go to Helplines →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+  <div class="shell">
+    <div class="footer-top">
+      <div>
+        <a href="index.html" class="footer-brand">
+          <img src="assets/img/logo.png" alt="Cyber Hayat shield logo" />
+          Cyber Hayat
+        </a>
+        <p style="max-width:22rem;color:rgba(255,255,255,.55);font-size:.9rem;margin-top:1rem;line-height:1.6;" data-i18n="footer.tagline">
+          A student-led cyber safety initiative from the University of Central Punjab, helping people
+          recognize cyber harassment, protect evidence, and reach the right support channels in Pakistan.
+        </p>
+      </div>
+      <div class="footer-cols">
+        <div class="footer-col">
+          <h4 data-i18n="footer.platform">Platform</h4>
+          <a href="index.html" data-i18n="nav.home">Home</a>
+          <a href="guide.html" data-i18n="nav.guide">Guide</a>
+          <a href="chatbot.html" data-i18n="nav.chatbot">Chatbot</a>
+          <a href="resources.html" data-i18n="nav.resources">Resources</a>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footer.organization">Organization</h4>
+          <a href="helplines.html" data-i18n="nav.helplines">Helplines</a>
+          <a href="resources.html#legal-rights" data-i18n="footer.legalRights">Legal Rights</a>
+          <a href="https://www.instagram.com/cyberhayaatpk" target="_blank" rel="noopener">Instagram</a>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footer.urgent">Urgent</h4>
+          <a href="tel:1043">PCSW &middot; 1043</a>
+          <a href="tel:1799">NCCIA &middot; 1799</a>
+          <a href="tel:9911">FIA &middot; 9911</a>
+          <a href="tel:080039393">DRF &middot; 0800-39393</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p data-i18n="footer.copyright">&copy; 2026 Cyber Hayat PK &middot; Students of University of Central Punjab. Stay safe. Protect yourself.</p>
+      <div style="display:flex;gap:1rem;align-items:center;flex-wrap:wrap;">
+        <a href="privacy.html" style="color:rgba(255,255,255,.55);" data-i18n="footer.privacy">Privacy Policy</a>
+        <a href="terms.html" style="color:rgba(255,255,255,.55);" data-i18n="footer.terms">Terms of Use</a>
+        <div class="footer-socials">
+        <a href="https://www.instagram.com/cyberhayaatpk" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg class="svg-icon stroke" viewBox="0 0 24 24" width="18" height="18"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="3.5"/><circle cx="17.2" cy="6.8" r="1"/></svg>
+        </a>
+        <a href="https://whatsapp.com/channel/0029Vb8nyrC4o7qUW8L3h23G" target="_blank" rel="noopener" aria-label="WhatsApp">
+          <svg class="svg-icon stroke" viewBox="0 0 24 24" width="18" height="18"><path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.55L3 20l1.03-5.4A8.5 8.5 0 1 1 21 11.5Z"/></svg>
+        </a>
+      </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<button id="backToTop" class="back-to-top" aria-label="Back to top">
+  <svg class="svg-icon stroke" viewBox="0 0 24 24" width="18" height="18"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+</button>
+
+<script src="assets/js/config.js"></script>
+<script src="assets/js/settings.js"></script>
+<script src="assets/js/i18n.js"></script>
+<script src="assets/js/submit.js"></script>
+<script src="assets/js/main.js"></script>
+
+<script src="assets/js/chatbot.js"></script>
+
+</body>
+</html>
