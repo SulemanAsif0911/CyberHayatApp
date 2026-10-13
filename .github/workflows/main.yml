@@ -9,11 +9,16 @@ jobs:
         with: { distribution: temurin, java-version: 17 }
       - uses: gradle/actions/setup-gradle@v3
         with: { gradle-version: 8.7 }
-      - name: Create debug keystore
+      - name: Create signing keystore
         run: |
-          mkdir -p ~/.android
-          keytool -genkeypair -keystore ~/.android/debug.keystore -storepass android -alias androiddebugkey -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=Android Debug,O=Android,C=US"
-      - run: gradle :app:assembleRelease --no-daemon
+          keytool -genkeypair -keystore "$GITHUB_WORKSPACE/ci.keystore" -storepass android -alias cyberhayat -keypass android -keyalg RSA -keysize 2048 -validity 10000 -dname "CN=Cyber Hayat,O=Cyber Hayat,C=PK"
+      - name: Build release APK
+        run: gradle :app:assembleRelease --no-daemon
+        env:
+          CH_KEYSTORE: ${{ github.workspace }}/ci.keystore
+          CH_KEYSTORE_PASSWORD: android
+          CH_KEY_ALIAS: cyberhayat
+          CH_KEY_PASSWORD: android
       - uses: actions/upload-artifact@v4
         with:
           name: CyberHayat-release-apk
