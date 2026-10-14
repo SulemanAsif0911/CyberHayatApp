@@ -2,17 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Resources | Cyber Hayat PK</title>
 <meta name="description" content="Practical Cyber Hayat tools: anonymous incident reporting, evidence checklist generator, security quiz, complaint letter generator, legal rights, and Urdu support." />
-<meta name="theme-color" content="#0a0a0a" />
+<meta name="theme-color" content="#ffffff" />
 <link rel="icon" href="assets/img/logo.png" type="image/png" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
-<script>(function(){try{var t=localStorage.getItem('ch_theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
-
+<link rel="stylesheet" href="assets/css/app.css">
+<script src="assets/js/native.js"></script>
 </head>
 <body>
 <a href="#main" class="skip-link">Skip to content</a>
@@ -173,8 +170,8 @@
         <div class="eyebrow"><span class="eyebrow-dot"></span>After Reporting</div>
         <h3 class="display-3">Case Tracker</h3>
         <p class="lede" style="margin-top:.75rem;font-size:.9rem;">Enter your case reference from this page, or an official complaint/acknowledgement number.</p>
-        <div style="display:flex;gap:.6rem;margin-top:1.25rem;">
-          <input type="text" id="trackInput" placeholder="Case or acknowledgement ID" style="flex:1;padding:.8rem 1rem;border-radius:.875rem;background:var(--surface);box-shadow:inset 0 0 0 1px var(--line);">
+        <div style="display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1.25rem;">
+          <input type="text" id="trackInput" placeholder="Case or acknowledgement ID" style="flex:1 1 12rem;padding:.8rem 1rem;border-radius:.875rem;background:var(--surface);box-shadow:inset 0 0 0 1px var(--line);">
           <button id="trackBtn" class="btn btn-primary">Check Status</button>
         </div>
         <div class="result-box" id="trackResult" style="margin-top:1rem;">Enter your case reference or an official complaint number.</div>

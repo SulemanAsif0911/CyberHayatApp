@@ -2,17 +2,14 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>Privacy Policy | Cyber Hayat PK</title>
-<meta name="description" content="How Cyber Hayat PK handles your data: local-only storage, optional Gemini and Google Sheets integrations, and how your information is safeguarded." />
-<meta name="theme-color" content="#0a0a0a" />
+<meta name="description" content="How Cyber Hayat PK handles your data: local-only storage, offline-first storage, an AI assistant and Google Sheets sync, and how your information is safeguarded." />
+<meta name="theme-color" content="#ffffff" />
 <link rel="icon" href="assets/img/logo.png" type="image/png" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
-<script>(function(){try{var t=localStorage.getItem('ch_theme');if(t==='dark')document.documentElement.setAttribute('data-theme','dark');}catch(e){}})();</script>
-
+<link rel="stylesheet" href="assets/css/app.css">
+<script src="assets/js/native.js"></script>
 </head>
 <body>
 <a href="#main" class="skip-link">Skip to content</a>
@@ -148,19 +145,20 @@
       </div>
 
       <div>
-        <h3 style="font-size:1.05rem;">5. Google Gemini</h3>
+        <h3 style="font-size:1.05rem;">5. AI assistant (Llama)</h3>
         <p class="lede" style="margin-top:.5rem;font-size:.9rem;">
-          If you add your own Gemini API key in Settings, your chatbot messages are also sent directly
-          from your browser to Google's Gemini API using that key, to generate a reply. That traffic is
-          governed by Google's own privacy policy, separately from the conversation logging described
-          above.
+          When you are online, your chatbot messages are sent through the Cyber Hayat backend to a hosted
+          Llama language model to generate a reply. No API key is stored on your device. When you are offline,
+          the assistant answers from guidance built into the app and nothing is sent. Messages handled by the
+          model provider are subject to that provider's own privacy policy, separately from the conversation
+          logging described above.
         </p>
       </div>
 
       <div>
         <h3 style="font-size:1.05rem;">6. What stays local only</h3>
         <p class="lede" style="margin-top:.5rem;font-size:.9rem;">
-          Your dark mode, language, and Gemini key preferences are stored only in your browser's local
+          Your language preference and chat history are stored only in your browser's local
           storage and are never sent anywhere. The password strength checker never transmits or stores
           the password you type &mdash; it's scored entirely on your device.
         </p>

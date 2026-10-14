@@ -49,13 +49,13 @@
         };
         localStorage.setItem("ch_incident_" + id, JSON.stringify({ ...draft, savedAt: new Date().toISOString() }));
         lastDraft = draft;
-        incResult.textContent = `Submitted. Your case reference is ${id} — a confirmation is on its way to your email.`;
+        incResult.textContent = `Your case reference is ${id}. Keep it for follow-up.`;
         const res = await window.CH_SUBMIT.send("incident_report", draft);
-        if(res && res.offline){
-          incResult.textContent += " (Saved on this device — the support-team backend isn't connected yet.)";
-        } else if(res && res.ok === false){
-          window.CH_SUBMIT.toast("Couldn't reach the support team backend — your case ID is still saved locally.", "error");
+        if(res && res.queued){
+          incResult.textContent += " Saved securely on this device — it will be sent to the support team automatically when you're online.";
+          window.CH_SUBMIT.toast("Saved offline — will sync automatically.");
         } else {
+          incResult.textContent += " Submitted — a confirmation is on its way to your email.";
           window.CH_SUBMIT.toast("Report sent — check your email for confirmation.");
         }
       });
@@ -185,10 +185,8 @@ ${f.name}
         const f = letterFields();
         const res = await window.CH_SUBMIT.send("complaint_letter", f);
         ltResult.textContent = buildLetter(f);
-        if(res && res.offline){
-          window.CH_SUBMIT.toast("Saved on this device — the support-team backend isn't connected yet.");
-        } else if(res && res.ok === false){
-          window.CH_SUBMIT.toast("Couldn't reach the support team backend.", "error");
+        if(res && res.queued){
+          window.CH_SUBMIT.toast("Saved offline — will sync automatically.");
         } else {
           window.CH_SUBMIT.toast("A copy was sent to our support team and your email.");
         }
@@ -204,8 +202,7 @@ ${f.name}
         const res = await window.CH_SUBMIT.send("story_submission", { theme, outcome, story: draft });
         storyResult.textContent = "Thank you for sharing — your story has been sent to our team.";
         $("storyDraft").value = "";
-        if(res && res.offline) window.CH_SUBMIT.toast("Saved locally — backend not connected yet.");
-        else if(res && res.ok === false) window.CH_SUBMIT.toast("Couldn't reach the backend just now.", "error");
+        if(res && res.queued) window.CH_SUBMIT.toast("Saved offline — will sync automatically.");
         else window.CH_SUBMIT.toast("Story sent — thank you.");
       });
     });
@@ -218,8 +215,7 @@ ${f.name}
         const payload = { name, university: $("ambUni").value, city: $("ambCity").value, contact: $("ambContact").value, why: $("ambWhy").value };
         const res = await window.CH_SUBMIT.send("ambassador_signup", payload);
         ambResult.textContent = `Thanks, ${name} — your application has been sent to our team.`;
-        if(res && res.offline) window.CH_SUBMIT.toast("Saved locally — backend not connected yet.");
-        else if(res && res.ok === false) window.CH_SUBMIT.toast("Couldn't reach the backend just now.", "error");
+        if(res && res.queued) window.CH_SUBMIT.toast("Saved offline — will sync automatically.");
         else window.CH_SUBMIT.toast("Application sent — check your email.");
       });
     });

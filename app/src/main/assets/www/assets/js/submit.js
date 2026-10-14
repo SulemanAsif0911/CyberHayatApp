@@ -121,33 +121,75 @@
     toastTimer = setTimeout(()=> el.classList.remove("open"), 3600);
   }
 
-  /* ---------- backend submission ---------- */
-  async function send(type, payload){
-    const cfg = window.CH_CONFIG || {};
-    const email = getEmail();
-    const body = Object.assign({
-      type, email, secret: cfg.SHARED_SECRET || "",
-      page: location.pathname.split("/").pop() || "index.html"
-    }, payload);
+  /* ---------- backend submission (offline-first) ---------- */
+  const QKEY = "ch_queue";
+  function readQ(){ try{ return JSON.parse(localStorage.getItem(QKEY) || "[]"); }catch(e){ return []; } }
+  function writeQ(q){
+    try{ localStorage.setItem(QKEY, JSON.stringify(q)); }catch(e){}
+    document.dispatchEvent(new CustomEvent("ch:queue-changed"));
+  }
+  function uid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2, 8); }
 
-    if(!cfg.APPS_SCRIPT_URL){
-      // Backend not configured yet — keep the UX working, just skip the network call.
-      return { ok:false, offline:true };
-    }
+  async function post(body, timeoutMs){
+    const cfg = window.CH_CONFIG || {};
+    if(!cfg.APPS_SCRIPT_URL) throw new Error("not-configured");
+    const ctl = ("AbortController" in window) ? new AbortController() : null;
+    const t = ctl ? setTimeout(()=> ctl.abort(), timeoutMs || 20000) : null;
     try{
       const res = await fetch(cfg.APPS_SCRIPT_URL, {
         method: "POST",
-        headers: { "Content-Type": "text/plain;charset=utf-8" }, // avoids CORS preflight against Apps Script
-        body: JSON.stringify(body)
+        headers: { "Content-Type": "text/plain;charset=utf-8" }, // simple request: no CORS preflight
+        body: JSON.stringify(body),
+        signal: ctl ? ctl.signal : undefined
       });
-      const data = await res.json().catch(()=> ({ ok:true }));
+      const data = await res.json();
       return data;
-    }catch(err){
-      return { ok:false, error: String(err) };
-    }
+    } finally { if(t) clearTimeout(t); }
   }
 
-  window.CH_SUBMIT = { hasConsent, getEmail, requireConsent, send, toast };
+  let flushing = false;
+  async function flush(manual){
+    if(flushing || !navigator.onLine) return;
+    flushing = true;
+    try{
+      let q = readQ();
+      while(q.length){
+        let r;
+        try{ r = await post(q[0], 20000); }catch(e){ break; }
+        if(r && (r.ok || r.error === "duplicate")){ q.shift(); writeQ(q); }
+        else if(r && (r.error === "invalid secret" || r.error === "unknown type")){ q.shift(); writeQ(q); } // never retry hopeless items
+        else break;
+      }
+      if(manual && !readQ().length) toast("All data synced.");
+    } finally { flushing = false; }
+  }
+
+  async function send(type, payload){
+    const cfg = window.CH_CONFIG || {};
+    const body = Object.assign({
+      type, email: getEmail(), secret: cfg.SHARED_SECRET || "", qid: uid(),
+      page: location.pathname.split("/").pop() || "index.html"
+    }, payload);
+    // Always store first, then try to deliver: nothing is lost offline.
+    const q = readQ(); q.push(body); writeQ(q);
+    if(navigator.onLine) await flush(false);
+    const pending = readQ().some(x => x.qid === body.qid);
+    return { ok: !pending, queued: pending };
+  }
+
+  /* Live AI answer (Llama via the backend). Never queued. */
+  async function chat(messages, lang, sessionId){
+    const cfg = window.CH_CONFIG || {};
+    if(!navigator.onLine) throw new Error("offline");
+    const data = await post({ action: "chat", secret: cfg.SHARED_SECRET || "", sessionId, lang, messages }, 30000);
+    if(!data || !data.ok || !data.reply) throw new Error((data && data.error) || "no-reply");
+    return data;
+  }
+
+  window.addEventListener("online", ()=> flush(false));
+  document.addEventListener("DOMContentLoaded", ()=> setTimeout(()=> flush(false), 1500));
+
+  window.CH_SUBMIT = { hasConsent, getEmail, requireConsent, send, chat, flush, toast };
 
   document.addEventListener("DOMContentLoaded", ()=>{
     wireModalOnce();

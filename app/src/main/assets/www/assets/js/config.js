@@ -1,15 +1,12 @@
 // ============================================================
-// CYBER HAYAT — site configuration
-// Fill these in once after deploying the Apps Script backend
-// (see SETUP_GUIDE.md). Until CH_APPS_SCRIPT_URL is set, forms
-// and the chatbot still work normally — submissions are simply
-// kept on-device only, and no email is sent.
+// CYBER HAYAT — app configuration
+// After you deploy the NEW Apps Script (backend/Code.gs):
+//   1. paste the Web App URL below (ends with /exec)
+//   2. paste the same SHARED_SECRET you set in Code.gs
+// Until then the app works fully offline: forms are kept on the device
+// and uploaded automatically once these two values are filled in.
 // ============================================================
 window.CH_CONFIG = {
-  // Paste the Web App URL you get from Apps Script → Deploy → New deployment.
-  // Looks like: https://script.google.com/macros/s/AKfycb.../exec
-  APPS_SCRIPT_URL: "https://script.google.com/macros/s/AKfycbzTis4kmc3YlLL5t8QSQguvawRgfNGVjT-8Uh2AIBVsc00cYYU0VYrMAN-LVs76WFig8w/exec",
-
-  // Must exactly match SHARED_SECRET in your Apps Script Code.gs.
-  SHARED_SECRET: "cyberhayatsuliwaizmemo@2026@civics"
+  APPS_SCRIPT_URL: "",   // e.g. "https://script.google.com/macros/s/AKfy.../exec"
+  SHARED_SECRET: ""      // must exactly match SHARED_SECRET in Code.gs
 };

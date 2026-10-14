@@ -321,6 +321,13 @@ html, body {
 }
 #brandChip img{ width:1.15rem; height:1.15rem; border-radius:50%; display:block; }
 #brandChip span.accent{ color:var(--accent-from); }
+
+/* ── fit-to-screen overrides (phones) ── */
+html,body{ height:100%; overflow:hidden; }
+.scene{ padding:4.25rem 5vw 5.5rem; overflow-y:auto; justify-content:flex-start; }
+.scene > *:first-child{ margin-top:auto; } .scene > *:last-child{ margin-bottom:auto; }
+@media (min-width:700px){ .scene{ padding:4rem 6vw 6rem; } }
+#controls{ bottom:max(.9rem, env(safe-area-inset-bottom)) !important; max-width:calc(100% - 1.5rem); }
 </style>
 </head>
 <body>
